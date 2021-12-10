@@ -1,4 +1,4 @@
-from SublimeLinter.lint import Linter, LintMatch
+from SublimeLinter.lint import Linter, LintMatch, STREAM_STDERR
 
 class Luau(Linter):
     cmd = 'luau-analyze --formatter=gnu ${file}'
@@ -6,6 +6,7 @@ class Luau(Linter):
     defaults = {
         'selector': 'source.lua, source.luae'
     }
+    error_stream = STREAM_STDERR
 
     def split_match(self, match):
         match, line, col, error, warning, msg, _ = super().split_match(match)
